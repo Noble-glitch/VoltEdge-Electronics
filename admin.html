@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>VoltEdge – Confirm payment (staff only)</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>Confirm payment</h1>
+    <p class="lead">Staff only. Use this after you have verified a customer's payment. It marks the order as paid, activates any bonus, and emails the customer.</p>
+    <p class="hint" id="cfgWarn" hidden>Open <code>admin.js</code> and paste your n8n payment webhook address into <code>CONFIRM_WEBHOOK_URL</code>.</p>
+
+    <form id="f" novalidate>
+      <label for="ref">Order reference</label>
+      <input id="ref" placeholder="VE-20261105-AB3C9" autocomplete="off" required>
+
+      <label for="pay">Payment reference (optional)</label>
+      <input id="pay" placeholder="Bank transfer reference" autocomplete="off">
+
+      <label for="key">Admin key</label>
+      <input id="key" type="password" autocomplete="off" required>
+      <div class="hint">The same key you set inside the "Verify Admin Key" node in n8n.</div>
+
+      <button id="btn" type="submit">Confirm payment</button>
+    </form>
+    <div id="result" role="status"></div>
+  </div>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

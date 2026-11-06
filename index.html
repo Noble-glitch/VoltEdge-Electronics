@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoltEdge Electronics – Order online</title>
+<meta name="description" content="Order phones, laptops, TVs and accessories from VoltEdge Electronics. Prices in naira.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 2 6 18h8l-2 12 14-18h-8z" fill="#ffc83d"/></svg>
+      VoltEdge Electronics
+    </a>
+    <a class="jump" href="#ticket">Your order (<span id="topCount">0</span>)</a>
+  </div>
+</header>
+
+<section class="intro">
+  <h1>Electronics, priced in naira.</h1>
+  <p>Choose your gadgets and place your order online. Orders of ₦500,000 or more earn a <strong>5% store-credit bonus</strong> once payment is verified.</p>
+</section>
+
+<main class="wrap">
+  <section aria-labelledby="listTitle">
+    <div class="list-head">
+      <h2 id="listTitle">Price list</h2>
+      <span>All prices in Nigerian naira (₦)</span>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <aside class="ticket" id="ticket" aria-live="polite">
+    <div id="orderPanel">
+      <h2>Your order</h2>
+      <div id="cfgWarn" class="banner warn" hidden>The order link is not set yet. Open <code>app.js</code> and paste your n8n webhook address into <code>ORDER_WEBHOOK_URL</code>.</div>
+      <p class="empty" id="empty">Nothing here yet. Add a product from the price list.</p>
+      <ul class="lines" id="lines"></ul>
+
+      <div class="total"><span>Order total</span><strong id="total">₦0</strong></div>
+
+      <div class="meter" id="meter">
+        <p id="meterText"></p>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="500000" aria-valuenow="0" aria-label="Progress towards the bonus"><i id="meterFill"></i></div>
+        <small>The bonus stays pending until we verify your payment.</small>
+      </div>
+
+      <form id="orderForm" novalidate>
+        <div id="formError" class="banner bad" role="alert" hidden></div>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" autocomplete="name" required>
+          <div class="err" data-for="name"></div>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <div class="hint">Your order confirmation is sent here.</div>
+          <div class="err" data-for="email"></div>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0803 123 4567" required>
+          <div class="err" data-for="phone"></div>
+        </div>
+        <div class="field">
+          <label for="notes">Notes for our team (optional)</label>
+          <textarea id="notes" name="notes" maxlength="500"></textarea>
+        </div>
+        <button class="submit" id="submitBtn" type="submit">Place order</button>
+        <p class="fine">Placing an order does not mean payment has been made. We will contact you about payment.</p>
+      </form>
+    </div>
+
+    <div class="done" id="donePanel">
+      <h2>Order received</h2>
+      <div class="ref" id="doneRef"></div>
+      <dl>
+        <dt>Order total</dt><dd id="doneTotal"></dd>
+        <dt>Payment</dt><dd><span class="pill">Not yet verified</span></dd>
+        <dt id="doneBonusLabel">Bonus</dt><dd id="doneBonus"></dd>
+      </dl>
+      <p id="doneMsg" style="margin:16px 0 0"></p>
+      <ul class="next">
+        <li>A confirmation email is on its way to <b id="doneEmail"></b>.</li>
+        <li>Keep your order reference for any questions.</li>
+      </ul>
+      <button class="ghost" id="againBtn" type="button">Place another order</button>
+    </div>
+  </aside>
+</main>
+
+<footer>VoltEdge Electronics is a training-project storefront. Prices are simulation prices.</footer>
+
+<div class="bar-m"><span><b id="mCount">0</b> item(s) · <b id="mTotal">₦0</b></span><a href="#ticket">Review order</a></div>
+
+<script src="app.js"></script>
+</body>
+</html>
